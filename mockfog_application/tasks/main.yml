@@ -1,7 +1,15 @@
 ---
-# tasks file for mockfog_application
 - import_tasks: deploy.yml
   tags: deploy
 
 - import_tasks: collect.yml
   tags: collect
+
+- import_tasks: check_dependencies.yml
+  tags: check_dependencies
+
+- import_tasks: deploy_agent.yml
+  tags: deploy_agent
+
+- import_tasks: deploy_telegraf.yml
+  tags: deploy_telegraf

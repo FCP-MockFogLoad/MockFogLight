@@ -1,22 +1,55 @@
 Nodes:
-  - name: cloud1
-    role:
-
-  - name: cloud1_generators
+  - name: generator1
     role: generator
-    connect_to: cloud1_application
-    timeout: 10
+    image: ami-05da26ff253f6c5df
+    flavor: t3.nano
 
-  - name: cloud1_application
-    role: application
-    connect_to: cloud1_generators
-    timeout: 10
+  - name: generator2
+    role: generator
+    image: ami-05da26ff253f6c5df
+    flavor: t3.nano
+
+  - name: generator3
+    role: generator
+    image: ami-05da26ff253f6c5df
+    flavor: t3.nano
+
+  - name: generator4
+    role: generator
+    image: ami-05da26ff253f6c5df
+    flavor: t3.nano
+
+  - name: application_layer1_1
+    role: layer1
+    image: ami-05da26ff253f6c5df
+    flavor: t3.micro
+
+  - name: application_layer1_2
+    role: layer1
+    image: ami-05da26ff253f6c5df
+    flavor: t3.micro
+
+  - name: application_layer2
+    role: layer2
+    image: ami-05da26ff253f6c5df
+    flavor: t3.small
+
 
 Edges:
-  - u_of_edge: cloud1_generators
-    v_of_edge: cloud1
-    delay: 2
+  - u_of_edge: generator1 
+    v_of_edge: application_layer1_1
 
-  - u_of_edge: cloud1_application
-    v_of_edge: cloud1
-    delay: 2
+  - u_of_edge: generator2
+    v_of_edge: application_layer1_1
+
+  - u_of_edge: generator3
+    v_of_edge: application_layer1_2
+
+  - u_of_edge: generator4
+    v_of_edge: application_layer1_2
+
+  - u_of_edge: application_layer1_1
+    v_of_edge: application_layer2
+
+  - u_of_edge: application_layer1_2
+    v_of_edge: application_layer2
