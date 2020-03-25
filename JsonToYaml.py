@@ -9,7 +9,9 @@ for item in mapping_json:
     ec2_mapping[item['id']] = item['ip']
 
 with open('mapping.yml', 'w') as outfile:
-    print(yaml.dump(yaml.load(json.dumps(mapping_json)), outfile, default_flow_style=False))
+    outfile.write("nodes: \n")
+    print("nodes: \n" + yaml.dump(yaml.load(json.dumps(mapping_json)), outfile, default_flow_style=False))
 
 with open('mockfog_application/vars/mapping.yml', 'w') as outfile:
-    print(yaml.dump(yaml.load(json.dumps(ec2_mapping)), outfile, default_flow_style=False))
+    outfile.write("nodes: \n")
+    print("nodes: \n" + yaml.dump(yaml.load(json.dumps(ec2_mapping)), outfile, default_flow_style=False))
